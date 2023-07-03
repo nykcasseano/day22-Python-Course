@@ -1,4 +1,5 @@
 from turtle import Screen
+from paddle import Paddle
 
 Screen = Screen()
 screen.bgcolor = ("black")
@@ -13,19 +14,14 @@ paddle.shapesize(stretch_wid=5, stretch_len=1)
 paddle.penup()
 paddle.goto(350,0)
 
-def go_up():
-    new_y = paddle.ycor() + 20
-    paddle.goto(paddle.xcor(), new_y)
-    
-    
+r_paddle = Paddle((350,0))
+l_paddle = Paddle((-350,0))
 
-def go_down():
-    new_y = paddle.ycor() - 20
-    paddle.goto(paddle.xcor(), new_y)
-    
 screen.listen()
-scree.onkey(go_up, "Up")
-scree.onkey(go_down, "Down")
+scree.onkey(r_paddle.go_up, "Up")
+scree.onkey(r_paddle.go_down, "Down")
+scree.onkey(l_paddle.go_up, "w")
+scree.onkey(l_paddle.go_down, "s")
 
 
 game_is_on = True
